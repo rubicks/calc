@@ -21,7 +21,7 @@
 *.app
 
 # build dir
-/_build
+/_build/
 
 # autotoolery
 /INSTALL
