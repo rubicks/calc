@@ -19,3 +19,26 @@
 *.exe
 *.out
 *.app
+
+# build dir
+/_build
+
+# autotoolery
+/INSTALL
+/Makefile
+/Makefile.in
+/aclocal.m4
+/autom4te.cache/
+/compile
+/config.guess
+/config.h.in
+/config.sub
+/configure
+/depcomp
+/install-sh
+/ltmain.sh
+/m4/
+/missing
+
+# emacs temp files
+*~
