@@ -15,13 +15,13 @@ LT_PREREQ([2.4])
 LT_INIT([dlopen])
 
 # Checks for programs.
-AC_PROG_CXX
+AX_CXX_COMPILE_STDCXX_11
 AX_PROG_FLEX
 AX_PROG_BISON
 
 # Checks for libraries.
 BOOST_REQUIRE([1.55])
-BOOST_THREAD
+dnl BOOST_THREAD
 
 # Checks for header files.
 

@@ -10,35 +10,33 @@
 #  error"config.h"
 #endif
 
-#ifdef HAVE_BOOST_THREAD_HPP
-#  include<boost/thread.hpp>
-#else
-#  error"boost/thread.hpp"
-#endif
+#include "calc.hpp"
+
+
+/* #ifdef HAVE_BOOST_THREAD_HPP */
+/* #  include<boost/thread.hpp> */
+/* #else */
+/* #  error"boost/thread.hpp" */
+/* #endif */
 
 
 namespace
 {
-
-    struct callable
+    void
+    foo( void )
     {
-        void
-        operator()( void )
-        {
-            std::cout << __PRETTY_FUNCTION__ << std::endl ;
-        }
-    };
+        std::cout << std::endl << __PRETTY_FUNCTION__ << std::endl ;
+    }
 }
 
 int
 main( int argc, char**argv )
 {
-    std::cout << __PRETTY_FUNCTION__ << std::endl ;
+    std::cout
+        << std::endl
+        << __PRETTY_FUNCTION__
+        << std::endl
+        ;
 
-    callable c;
-
-    boost::thread t( c );
-    t.join();
-    
-    return 0 ;
+    return calc::eval( argc, argv );
 }
