@@ -7,6 +7,7 @@
 #include<boost/lexical_cast.hpp>
 #include"ntctx.hpp"
 #include"nt.yy.hh"
+#include"where.hpp"
 /* nt.ll code block end */
 %}
 
@@ -29,6 +30,9 @@ OP     [-+*/^]
 
 {DIGIT}+ {
     std::cout
+        << std::endl
+        << WHERE_STRING()
+        << std::endl
         << "INTEGER (code " << INTEGER << ")"
         << " .. yytext == \"" << yytext << "\""
         << " .. atol( yytext ) == " << atol( yytext )
@@ -40,6 +44,9 @@ OP     [-+*/^]
 
 {DIGIT}+"."{DIGIT}* {
     std::cout
+        << std::endl
+        << WHERE_STRING()
+        << std::endl
         << "REAL (code " << REAL << ")"
         << " .. yytext == \"" << yytext << "\""
         << " .. atof( yytext ) == " << atof( yytext )
@@ -55,6 +62,9 @@ OP     [-+*/^]
 
 {OP} {
     std::cout
+        << std::endl
+        << WHERE_STRING()
+        << std::endl
         << "OP"
         << " .. *yytext == \'" << *yytext << "\'"
         << " .. unsigned( *yytext ) == "
@@ -65,8 +75,7 @@ OP     [-+*/^]
         << unsigned( *yytext )
         << std::endl
         ;
-    yylval->u.cval = *yytext ;
-    return *yytext ;
+    return ( yylval->u.ival = * reinterpret_cast< int* >( yytext ) );
 }
 
 . {

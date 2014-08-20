@@ -1,8 +1,5 @@
 # calc/configure.ac
 
-#                                               -*- Autoconf -*-
-# Process this file with autoconf to produce a configure script.
-
 AC_PREREQ([2.68])
 AC_INIT([calc],[0.1.0-snapshot],[rubicks00@gmail.com])
 AC_LANG_PUSH([C++])

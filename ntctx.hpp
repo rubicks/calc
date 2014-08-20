@@ -14,6 +14,7 @@ struct ntctx
         long   ival ;
         char   cval ;
         char*  sval ;
+        void*  pval ;
     } u ;
     ntctx( void  );
     ~ntctx( void  );
