@@ -9,11 +9,11 @@ before_install:
   - sudo apt-get update -qq
 
 install:
-  - sudo apt-get install -y g++-4.6
-  - sudo apt-get install -y check
-  - sudo apt-get install -y automake
   - sudo apt-get install -y autoconf
   - sudo apt-get install -y autoconf-archive
+  - sudo apt-get install -y automake
+  - sudo apt-get install -y check
+  - sudo apt-get install -y libboost-dev
   - sudo apt-get install -y libtool
   - echo "=== TRAVIS NEEDS AUTOMAKE ==="
   - cd `mktemp -d`

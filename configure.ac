@@ -22,7 +22,7 @@ AX_PROG_FLEX([],[AC_MSG_ERROR([flex executable missing])])
 
 
 # Checks for libraries.
-BOOST_REQUIRE([1.55])
+BOOST_REQUIRE([1.48])
 dnl BOOST_THREAD
 
 # Checks for header files.
