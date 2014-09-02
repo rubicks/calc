@@ -53,6 +53,7 @@ before_script:
   - which autoconf && autoconf --version
   - which automake && automake --version
   - which libtool  && libtool  --version
+  - which bison    && bison    --version
 
 script:
   - cd ${TRAVIS_BUILD_DIR}
