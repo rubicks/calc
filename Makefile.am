@@ -2,6 +2,7 @@
 
 ACLOCAL_AMFLAGS = -I m4 -I build-aux
 
+AM_CXXFLAGS = -Wall -Wextra # -Werror -pedantic-errors # -rdynamic
 #AM_CPPFLAGS = -DYYDEBUG
 
 

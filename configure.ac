@@ -1,6 +1,6 @@
 # calc/configure.ac
 
-AC_PREREQ([2.68])
+AC_PREREQ([2.69])
 AC_INIT([calc],[0.1.0-snapshot],[rubicks00@gmail.com])
 AC_LANG_PUSH([C++])
 AC_CONFIG_SRCDIR([ntmain.cpp])
@@ -14,7 +14,7 @@ LT_INIT([dlopen])
 
 # Checks for programs.
 
-AX_CXX_COMPILE_STDCXX_11
+#AX_CXX_COMPILE_STDCXX_11
 
 AX_PROG_BISON([],[AC_MSG_ERROR([bison executable missing])])
 

@@ -61,7 +61,7 @@ input: %empty
      ;
 
 line: '\n'
-    | exp '\n' { printf( "\t%.10g\n", $1 ); }
+    | exp '\n' { std::cout << std::endl << $1 << std::endl ; }
     ;
 
 exp : REAL              { $$ = $1            ; }
