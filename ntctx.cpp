@@ -1,31 +1,34 @@
 /* calc/ntctx.cpp */
 
-#include<boost/utility.hpp>
-#include<boost/exception/all.hpp>
+#include <boost/utility.hpp>
+#include <boost/exception/all.hpp>
 
 
-#include"ntctx.hpp"
-#include"nty.hh"
-#include"ntl.hh"
+#include "ntctx.hpp"
+#include "nty.hh"
+#include "ntl.hh"
+#include "util.hh"
 
 namespace{
     struct _error : virtual std::exception, virtual boost::exception {} ;
 }
 
-ntctx::ntctx( void )
+
+ntctx*
+ntctx_create( void )
 {
-    if( 0 != yylex_init( boost::addressof( scanner_ ) ) )
-        BOOST_THROW_EXCEPTION
-            ( _error()
-              << boost::errinfo_api_function( "yylex_init" )
-              << boost::errinfo_errno( errno ) );
+    ntctx*p = new ntctx ;
+    p->scanner_ = calc::util::scanner_create();
+    return p ;
 }
 
-ntctx::~ntctx( void )
+
+void
+ntctx_destroy( ntctx*p )
 {
-    if( 0 != yylex_destroy( scanner_ ) )
-        BOOST_THROW_EXCEPTION
-            ( _error()
-              << boost::errinfo_api_function( "yylex_destroy" )
-              << boost::errinfo_errno( errno ) );
+    calc::util::scanner_destroy( p->scanner_ );
+    delete p ;
+    p = 0 ;
 }
+
+

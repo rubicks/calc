@@ -16,8 +16,12 @@ struct ntctx
         char*  sval ;
         void*  pval ;
     } u ;
-    ntctx( void  );
-    ~ntctx( void  );
 };
+
+ntctx*ntctx_create( void );
+void ntctx_destroy( ntctx* );
+
+
+
 
 #endif//ndef __NTCTX_HPP__

@@ -7,7 +7,7 @@ AC_CONFIG_SRCDIR([ntmain.cpp])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_AUX_DIR([build-aux])
-AM_INIT_AUTOMAKE
+AM_INIT_AUTOMAKE([subdir-objects])
 LT_PREREQ([2.4])
 LT_INIT([dlopen])
 
