@@ -39,6 +39,12 @@ install:
   - tar vxJf libtool-2.4.2.tar.xz
   - cd libtool-2.4.2
   - ./configure && make && sudo make install
+  - echo "=== TRAVIS NEEDS BISON ==="
+  - cd `mktemp -d`
+  - wget http://ftp.gnu.org/gnu/bison/bison-3.0.2.tar.xz
+  - tar vxJf bison-3.0.2.tar.xz
+  - cd bison-3.0.2
+  - ./configure && make && sudo make install
   - echo "Getting real tired of your shit, Travis."
 
 
