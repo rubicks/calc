@@ -24,7 +24,7 @@ namespace
 
         YY_BUFFER_STATE bs = yy_scan_string( s.c_str(), dumbctx.scanner_ );
 
-        int stat = yyparse( &dumbctx );
+        int ret = yyparse( &dumbctx );
 
         {
             std::cout
@@ -34,12 +34,12 @@ namespace
                 << "\", "
                 << std::hex << std::showbase << ( &dumbctx )
                 << " ) == "
-                << std::dec << stat
+                << std::dec << ret
                 << std::endl
                 ;
         }
 
-        if( 0 == stat ){
+        if( 0 == ret ){
             std::cout
                 << std::endl
                 << "dumbctx.value_ == "
@@ -53,6 +53,8 @@ namespace
             int stat = yylex_destroy( (dumbctx.scanner_) );
             if( 0 != stat ) return stat ;
         }
+
+        return ret ;
     }
 }
 
@@ -66,7 +68,12 @@ main( int, char** )
         << std::endl
         ;
 
-    int n = _parse( "42" );
+    std::cout
+        << std::endl
+        << "_parse( \"42\" ) == "
+        << std::dec << _parse( "42" )
+        << std::endl
+        ;
 
     return 0 ;
 }

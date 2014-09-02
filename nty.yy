@@ -37,7 +37,7 @@
 %code {
 /* nty.yy code BEGIN */
     int yylex( YYSTYPE*lvalp, void*scanner );
-    int yyerror( YYSTYPE*lvalp, char const*msg ){
+    void yyerror( YYSTYPE*lvalp, char const*msg ){
         std::cerr
             << std::endl
             << __PRETTY_FUNCTION__
