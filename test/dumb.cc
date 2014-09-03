@@ -73,6 +73,12 @@ main( int, char** )
         << "_parse( \"42\" ) == "
         << std::dec << _parse( "42" )
         << std::endl
+        << "_parse( \"11 + 31 + 17\" ) == "
+        << std::dec << _parse( "11 + 31 + 17" )
+        << std::endl
+        << "_parse( \"11 + 15 / 3\" ) == "
+        << std::dec << _parse( "11 + 15 / 3" )
+        << std::endl
         ;
 
     return 0 ;

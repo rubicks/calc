@@ -5,7 +5,13 @@
 #include <cmath>
 #include <iostream>
 #include "dumbctx.hh"
-    dumbctx_t _assign( dumbctx_t const& );
+    void
+    _assign( dumbctx_t&ctx,
+             dumbctx_t&res,
+             dumbctx_t&arg )
+    {
+        ctx.value_ = res.value_ = arg.value_ ;
+    }
 /* dumbyy.yy code top END */
  }
 
@@ -54,7 +60,7 @@
 /*     ; */
 
 input: %empty
-     | exp
+     | exp              { _assign( *context, $$, $1 ); }
      ;
 
 exp : NUM               { $$ = $1            ; }
