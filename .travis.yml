@@ -57,4 +57,3 @@ script:
   - make
   - make check
   - make distcheck
-
