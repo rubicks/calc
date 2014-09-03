@@ -1,16 +1,16 @@
-/* calc/nt.yy */
+/* calc/nty.yy */
 
 %code top {
-/* %code top BEGIN */
+/* nty.yy code top BEGIN */
 #include <cmath>
 #include <iostream>
 #include "ntctx.hpp"
-/* %code top END */
+/* nty.yy code top END */
  }
 
 %define api.pure full
-%defines "nt.yy.hh"
-%output  "nt.yy.cc"
+%defines "nty.hh"
+%output  "nty.cc"
 %define parse.error verbose
 %lex-param { void*scanner }
 %parse-param { ntctx*context } /* YYSTYPE == ntctx */
@@ -35,7 +35,7 @@
 %right '^'
 
 %code {
-/* %code BEGIN */
+/* nty.yy code BEGIN */
     int yylex( YYSTYPE*lvalp, void*scanner );
     int yyerror( YYSTYPE*lvalp, char const*msg ){
         std::cerr
@@ -51,7 +51,7 @@
             ;
     }
 #define scanner (context->scanner_)
-/* %code END */
+/* nty.yy code END */
  }
 
 %%

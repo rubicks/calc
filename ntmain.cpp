@@ -6,8 +6,8 @@
 #include<boost/utility.hpp>
 
 #include"ntctx.hpp"
-#include"nt.yy.hh"
-#include"nt.ll.hh"
+#include"nty.hh"
+#include"ntl.hh"
 
 
 int

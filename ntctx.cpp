@@ -5,8 +5,8 @@
 
 
 #include"ntctx.hpp"
-#include"nt.yy.hh"
-#include"nt.ll.hh"
+#include"nty.hh"
+#include"ntl.hh"
 
 namespace{
     struct _error : virtual std::exception, virtual boost::exception {} ;

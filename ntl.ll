@@ -1,14 +1,14 @@
-/* calc/nt.ll */
+/* calc/ntl.ll */
 
 %{
-/* nt.ll code block begin */
+/* ntl.ll code block begin */
 #include<cmath>
 #include<iostream>
 #include<boost/lexical_cast.hpp>
 #include"ntctx.hpp"
-#include"nt.yy.hh"
+#include"nty.hh"
 #include"where.hpp"
-/* nt.ll code block end */
+/* ntl.ll code block end */
 %}
 
 
@@ -16,8 +16,8 @@
 %option reentrant
 %option bison-bridge
 %option noyywrap
-%option header-file="nt.ll.hh"
-%option outfile="nt.ll.cc"
+%option header-file="ntl.hh"
+%option outfile="ntl.cc"
 
 
 /* definitions section */
