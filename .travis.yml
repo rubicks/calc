@@ -15,30 +15,49 @@ install:
   - sudo apt-get install -y check
   - sudo apt-get install -y libboost-dev
   - sudo apt-get install -y libtool
+  - echo
   - echo "=== TRAVIS NEEDS AUTOMAKE ==="
   - cd `mktemp -d`
   - wget http://ftp.gnu.org/gnu/automake/automake-1.14.1.tar.xz
   - tar vxJf automake-1.14.1.tar.xz
   - cd automake-1.14.1
   - ./configure && make && sudo make install
+  - echo
   - echo "=== TRAVIS NEEDS AUTOCONF ==="
   - cd `mktemp -d`
   - wget http://ftp.gnu.org/gnu/autoconf/autoconf-2.69.tar.xz
   - tar vxJf autoconf-2.69.tar.xz
   - cd autoconf-2.69
   - ./configure && make && sudo make install
+  - echo
   - echo "=== TRAVIS NEEDS AUTOCONF-ARCHIVE ==="
   - cd `mktemp -d`
   - wget http://ftp.gnu.org/gnu/autoconf-archive/autoconf-archive-2014.02.28.tar.xz
   - tar vxJf autoconf-archive-2014.02.28.tar.xz
   - cd autoconf-archive-2014.02.28
   - ./configure && make && sudo make install
+  - echo
   - echo "=== TRAVIS NEEDS LIBTOOL ==="
   - cd `mktemp -d`
   - wget http://ftp.gnu.org/gnu/libtool/libtool-2.4.2.tar.xz
   - tar vxJf libtool-2.4.2.tar.xz
   - cd libtool-2.4.2
   - ./configure && make && sudo make install
+  - echo
+  - echo "=== TRAVIS NEEDS BISON ==="
+  - cd `mktemp -d`
+  - wget http://ftp.gnu.org/gnu/bison/bison-3.0.2.tar.xz
+  - tar vxJf bison-3.0.2.tar.xz
+  - cd bison-3.0.2
+  - ./configure && make && sudo make install
+  - echo
+  - echo "=== TRAVIS NEEDS FLEX ==="
+  - cd `mktemp -d`
+  - wget http://downloads.sourceforge.net/project/flex/flex-2.5.39.tar.xz
+  - tar vxJf flex-2.5.39.tar.xz
+  - cd flex-2.5.39
+  - ./configure && make && sudo make install
+  - echo
   - echo "Getting real tired of your shit, Travis."
 
 
