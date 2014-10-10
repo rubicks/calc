@@ -9,12 +9,12 @@ before_install:
   - sudo apt-get update -qq
 
 install:
-  - sudo apt-get install -y check
-  - sudo apt-get install -y automake
   - sudo apt-get install -y autoconf
   - sudo apt-get install -y autoconf-archive
-  - sudo apt-get install -y libtool
+  - sudo apt-get install -y automake
+  - sudo apt-get install -y check
   - sudo apt-get install -y libboost-dev
+  - sudo apt-get install -y libtool
   - echo "=== TRAVIS NEEDS AUTOMAKE ==="
   - cd `mktemp -d`
   - wget http://ftp.gnu.org/gnu/automake/automake-1.14.1.tar.xz
@@ -46,6 +46,8 @@ before_script:
   - env | sort
   - which autoconf && autoconf --version
   - which automake && automake --version
+  - which bison    && bison    --version
+  - which flex     && flex     --version
   - which libtool  && libtool  --version
 
 script:

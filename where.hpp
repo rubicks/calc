@@ -1,7 +1,7 @@
 /* calc/where.hpp */
 
-#ifndef __WHERE_HPP__
-#define __WHERE_HPP__
+#ifndef ___CALC___WHERE_HPP___
+#define ___CALC___WHERE_HPP___
 
 #include<string>
 #include<boost/preprocessor/stringize.hpp>
@@ -15,4 +15,4 @@
         ::std::string( BOOST_PP_STRINGIZE( __LINE__ ) ) ) ) \
 /**/
 
-#endif//ndef __WHERE_HPP__
+#endif//ndef ___CALC___WHERE_HPP___

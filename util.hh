@@ -1,5 +1,7 @@
 /* calc/util.hh */
 
+#ifndef ___CALC___UTIL_HH___
+#define ___CALC___UTIL_HH___
 
 namespace calc
 {
@@ -9,3 +11,5 @@ namespace calc
         void scanner_destroy( void* );
     }
 }
+
+#endif//ndef ___CALC___UTIL_HH___
