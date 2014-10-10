@@ -1,13 +1,20 @@
 # calc/configure.ac
 
-AC_PREREQ([2.69])
-AC_INIT([calc],[0.1.0-snapshot],[rubicks00@gmail.com])
+AC_PREREQ([2.68])
+
+AC_INIT([calc],
+        [0.1.0-snapshot],
+        [rubicks00@gmail.com],
+        [calc],
+        [https://github.com/rubicks/calc])
+
 AC_LANG_PUSH([C++])
 AC_CONFIG_SRCDIR([ntmain.cpp])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_AUX_DIR([build-aux])
 AM_INIT_AUTOMAKE([subdir-objects])
+
 LT_PREREQ([2.4])
 LT_INIT([dlopen])
 
