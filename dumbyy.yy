@@ -15,6 +15,7 @@
 /* dumbyy.yy code top END */
  }
 
+%require "3.0.2"
 %define api.pure full
 %defines "dumbyy.hh"
 %output  "dumbyy.cc"
