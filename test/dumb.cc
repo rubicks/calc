@@ -13,48 +13,71 @@
 
 namespace
 {
-    int
-    _parse( std::string const&s )
+    unsigned long
+    _addy( void*p ){ return reinterpret_cast< unsigned long >( p ); }
+
+    struct parse
     {
-        dumbctx_t dumbctx ;
+        typedef struct result_type
         {
-            int stat = yylex_init( &(dumbctx.scanner_) );
-            if( 0 != stat ) return stat ;
-        }
+            int stat_ ;
+            dumbctx_t ctx_ ;
+        } result_type ;
 
-        YY_BUFFER_STATE bs = yy_scan_string( s.c_str(), dumbctx.scanner_ );
-
-        int ret = yyparse( &dumbctx );
-
+        result_type
+        operator()( std::string const&s )
         {
-            std::cout
-                << std::endl
-                << "yyparse( \""
-                << s
-                << "\", "
-                << std::hex << std::showbase << ( &dumbctx )
-                << " ) == "
-                << std::dec << ret
-                << std::endl
-                ;
-        }
+            result_type ret ;
 
-        if( 0 == ret ){
-            std::cout
-                << std::endl
-                << "dumbctx.value_ == "
-                << std::dec
-                << dumbctx.value_
-                << std::endl
-                ;
-        }
+            {
+                int stat = yylex_init( &( ret.ctx_.scanner_ ) );
+                if( 0 != stat ){
+                    std::stringstream ss ;
+                    ss
+                        << "yylex_init( "
+                        << std::hex << std::showbase
+                        << _addy( &( ret.ctx_.scanner_ ) )
+                        << " ) == "
+                        << std::dec
+                        << stat
+                        ;
+                    throw std::runtime_error( ss.str() );
+                }
+            }
 
-        {
-            int stat = yylex_destroy( (dumbctx.scanner_) );
-            if( 0 != stat ) return stat ;
-        }
+            YY_BUFFER_STATE bs =
+                yy_scan_string( s.c_str(), ret.ctx_.scanner_ );
 
-        return ret ;
+            ret.stat_ = yyparse( &( ret.ctx_ ) );
+
+            {
+                int stat = yylex_destroy( ret.ctx_.scanner_ );
+                if( 0 != stat ){
+                    std::stringstream ss ;
+                    ss
+                        << "yylex_destroy( "
+                        << std::hex << std::showbase
+                        << _addy( ret.ctx_.scanner_ )
+                        << " ) == "
+                        << std::dec
+                        << stat
+                        ;
+                    throw std::runtime_error( ss.str() );
+                }
+            }
+
+            return ret ;
+        }
+    } _parse ;
+
+    std::ostream&
+    operator<<( std::ostream&os, parse::result_type const&x )
+    {
+        return
+            os << "{ stat_:" << x.stat_
+               << ", ctx_:" << x.ctx_
+               << " }"
+            ;
     }
 }
 
@@ -68,18 +91,38 @@ main( int, char** )
         << std::endl
         ;
 
-    std::cout
-        << std::endl
-        << "_parse( \"42\" ) == "
-        << std::dec << _parse( "42" )
-        << std::endl
-        << "_parse( \"11 + 31 + 17\" ) == "
-        << std::dec << _parse( "11 + 31 + 17" )
-        << std::endl
-        << "_parse( \"11 + 15 / 3\" ) == "
-        << std::dec << _parse( "11 + 15 / 3" )
-        << std::endl
-        ;
+    {
+        std::string s = "42" ;
+        std::cout
+            << "_parse( \"" << s << "\" ) == "
+            << _parse( s )
+            << std::endl
+            ;
+    }
+    {
+        std::string s = "11 + 31 - 17" ;
+        std::cout
+            << "_parse( \"" << s << "\" ) == "
+            << _parse( s )
+            << std::endl
+            ;
+    }
+    {
+        std::string s = "11 + 15 / 3" ;
+        std::cout
+            << "_parse( \"" << s << "\" ) == "
+            << _parse( s )
+            << std::endl
+            ;
+    }
+    {
+        std::string s = "2 ^ 3 ^ 2" ;
+        std::cout
+            << "_parse( \"" << s << "\" ) == "
+            << _parse( s )
+            << std::endl
+            ;
+    }
 
     return 0 ;
 }
